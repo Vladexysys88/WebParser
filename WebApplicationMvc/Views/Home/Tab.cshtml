@@ -1,0 +1,70 @@
+﻿@model List<ParserAnalyzing.Model.ViewTable>
+
+<table>
+    <tr>
+        <!--<th>country</th>
+        <th>domain</th>
+        <th>create_date</th>
+        <th>update_date</th>
+        <th>isDead</th>-->
+        @*@for (int i = 0; i < Model.Count; i++)
+        {
+            @for (int k = 0; k < Model[i].NS?.Count; k++)
+            {
+                <th>NS</th>
+            }
+            @for (int j = 0; j < Model[i].CNAME?.Count; j++)
+            {
+                <th>CNAME</th>
+            }
+            @for (int n = 0; n < Model[i].A?.Count; n++)
+            {
+                <th> A</th>
+            }
+            @for (int b = 0; b < Model[i].MX?.Count; b++)
+            {
+                <th>MX</th>
+                <th>MX</th>
+            }
+        }*@
+    <!--</tr>-->
+    @for (int i = 0; i < Model.Count; i++)
+    {
+    <tr>
+        <th>country</th>
+        <td>@Model[i].country</td>
+        <th>domain</th>
+        <td>@Model[i].domain</td>
+        <th>create_date</th>
+        <td>@Model[i].create_date</td>
+        <th>update_date</th>
+        <td>@Model[i].update_date</td>
+        <th>isDead</th>
+        <td>@Model[i].isDead</td>
+
+        @for (int k = 0; k < Model[i].NS?.Count; k++)
+        {
+            <th>NS</th>
+            <td> @Model[i].NS[k]</td>
+        }
+        @for (int j = 0; j < Model[i].CNAME?.Count; j++)
+        {
+            <th>CNAME</th>
+            <td> @Model[i].CNAME[j]</td>
+        }
+        @for (int n = 0; n < Model[i].A?.Count; n++)
+        {
+            <th> A</th>
+            <td> @Model[i].A[n]</td>
+        }
+        @for (int b = 0; b < Model[i].MX?.Count; b++)
+        {
+            <th> MX</th>
+            <td> @Model[i].MX[b].exchange</td>
+            <th> MX</th>
+            <td> @Model[i].MX[b].priority</td>
+        }
+
+    </tr>
+    }
+</table>
