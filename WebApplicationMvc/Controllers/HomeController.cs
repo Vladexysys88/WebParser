@@ -32,9 +32,9 @@ namespace WebApplicationMvc.Controllers
         public async Task<IActionResult> Tab()
         {
             var url = "https://tproger.ru/";
-            ParserHref final = new ParserHref();
-            await final.GetDataAsync(url);
-            var data = final.DataTable;
+            ParserHref parserHref = new ParserHref();
+            await parserHref.GetDataAsync(url);
+            var data = parserHref.DataTable;
             return View(data);
         }
 
