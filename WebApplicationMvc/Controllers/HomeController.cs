@@ -13,6 +13,7 @@ namespace WebApplicationMvc.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private const string url = "https://tproger.ru/";
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -31,7 +32,6 @@ namespace WebApplicationMvc.Controllers
 
         public async Task<IActionResult> Tab()
         {
-            var url = "https://tproger.ru/";
             ParserHref final = new ParserHref();
             await final.GetDataAsync(url);
             var data = final.DataTable;
