@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -12,11 +12,14 @@ namespace WebApplicationMvc.Controllers
 {
     public class HomeController : Controller
     {
+        private const string url = "https://tproger.ru/";
         private readonly ILogger<HomeController> _logger;
+        private readonly ParserHref _parserHref;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _parserHref = new ParserHref();
         }
 
         public IActionResult Index()
@@ -31,10 +34,8 @@ namespace WebApplicationMvc.Controllers
 
         public async Task<IActionResult> Tab()
         {
-            var url = "https://tproger.ru/";
-            ParserHref parserHref = new ParserHref();
-            await parserHref.GetDataAsync(url);
-            var data = parserHref.DataTable;
+            await _parserHref.GetDataAsync(url);
+            var data = _parserHref.DataTable;
             return View(data);
         }
 
